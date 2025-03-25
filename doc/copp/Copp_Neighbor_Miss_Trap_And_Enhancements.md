@@ -10,8 +10,10 @@
 - [6. Architecture Design](#6-architecture-design)
 - [7. High-Level Design](#7-high-level-design)
   - [7.1 SWSS Design](#71-swss-design)
-  - [7.2 CoPP Init FlowChart](#72-copp-init-flowchart)
-  - [7.3 CoPP Config FlowChart](#73-copp-config-flowchart)
+    - [7.1.1 CoPP Init FlowChart](#711-copp-init-flowchart)
+    - [7.1.2 CoPP Config FlowChart](#712-copp-config-flowchart)
+  - [7.2 CoPP Trap WorkFlow](#72-copp-trap-workflow)
+  - [7.3 CoPP Default Configuration Changes](#73-copp-default-configuration-changes)
   - [7.4 Schema Changes](#74-schema-changes)
 - [8. SAI API](#8-sai-api)
 - [9. Yang Model](#9-yang-model)
@@ -87,15 +89,15 @@ When CoPP trap configuration is received from APPL_DB:
 2. The trap configuration will be applied only if the trap is supported.
 3. If the trap is not supported, a syslog error is logged.
 
-### 7.2 CoPP Init FlowChart
+#### 7.1.1 CoPP Init FlowChart
 __Figure 1: CoPP Init FlowChart__
 
 ![CoPP Init FlowChart](images/CoPP_Init_FlowChart.png "Figure 1: CoPP Init FlowChart")
-### 7.3 CoPP Config FlowChart
+#### 7.1.2 CoPP Config FlowChart
 __Figure 2: CoPP Config FlowChart__
 
 ![CoPP Config FlowChart](images/CoPP_Config_FlowChart.png "Figure 2: CoPP Config FlowChart")
-### 7.3 CoPP Trap WorkFlow
+### 7.2 CoPP Trap WorkFlow
 
 __Figure 3: CoPP Trap WorkFlow__
 
