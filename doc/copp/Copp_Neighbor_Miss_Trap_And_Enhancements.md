@@ -34,7 +34,7 @@
 
 ## 2. Scope  
 
-This document presents the high-level design for supporting the Neighbor Miss CoPP trap type. It also covers the SAI enum capability query for the trap type attribute, CLI show command support for CoPP, and other CoPP enhancements.
+This document presents the high-level design for supporting the Neighbor Miss CoPP trap type. It also covers the SAI enum capability query for the trap type attribute, CLI show command support for CoPP.
 
 ## 3. Abbreviations 
 
@@ -44,14 +44,13 @@ This document presents the high-level design for supporting the Neighbor Miss Co
 | __SWSS__      | Switch State Service            |
 | __CLI__       | Command Line interface          |
 | __SAI__       | Switch Abstraction Interface    |
-| __DVS__       | Docker Virtual Switch           |
 | __ARP__       | Address Resolution Protocol     |
 
 ## 4. Overview 
 
 In today’s SONIC system, CoPP for neighbor miss traffic is undefined. A surge in such IP packets sent to the CPU for ARP resolution can potentially impact other CPU traffic, starving critical traffic such as IP2ME. Therefore, it is crucial to police neighbor miss traffic separately.
 
-Currently, trap types are applied to SAI without verifying their support, leading to exceptions in orchagent. Additionally, the current configuration lacks visibility of the trap types supported by SAI, and there is no CoPP CLI support available to display configured CoPP groups and trap types.
+Furthermore, the current implementation applies trap types to SAI without verifying their support, leading to exceptions in orchagent. Additionally, the current configuration lacks visibility of the trap types supported by SAI, and there is no CoPP CLI support available to display configured CoPP groups and trap types.
 
 This design proposes solution to the aforementioned problem. By introducing management support for neighbor miss trap type, which allows independent policing for neighbor miss packets. This ensures that surges in neighbor miss traffic will not impact other critical CPU-bound traffic and Prevents CPU starvation by controlling neighbor miss traffic independently. SAI also supports a trap type, SAI_HOSTIF_TRAP_TYPE_NEIGHBOR_MISS, to specifically identify and control neighbor miss traffic.
 
@@ -91,11 +90,11 @@ When CoPP trap configuration is received from APPL_DB:
 ### 7.2 CoPP Init FlowChart
 __Figure 1: CoPP Init FlowChart__
 
-![CoPP Init FlowChart](images/NewInitFlow.png "Figure 1: CoPP Init FlowChart")
+![CoPP Init FlowChart](images/CoPP_Init_FlowChart.png "Figure 1: CoPP Init FlowChart")
 ### 7.3 CoPP Config FlowChart
 __Figure 2: CoPP Config FlowChart__
 
-![CoPP Config FlowChart](images/NewConfigFlow.png "Figure 2: CoPP Config FlowChart")
+![CoPP Config FlowChart](images/CoPP_Config_FlowChart.png "Figure 2: CoPP Config FlowChart")
 ### 7.3 CoPP Trap WorkFlow
 
 __Figure 3: CoPP Trap WorkFlow__
